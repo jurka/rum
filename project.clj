@@ -1,20 +1,20 @@
-(defproject rum "0.12.11"
+(defproject rum "0.12.12"
   :description "ClojureScript wrapper for React"
   :license {:name "Eclipse"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :url "https://github.com/tonsky/rum"
 
   :dependencies
-  [[org.clojure/clojure "1.9.0" :scope "provided"]
-   [org.clojure/clojurescript "1.10.773" :scope "provided"]
-   [cljsjs/react "16.8.6-0"]
-   [cljsjs/react-dom "16.8.6-0"]]
+  [[org.clojure/clojure "1.12.1" :scope "provided"]
+   [org.clojure/clojurescript "1.12.42" :scope "provided"]
+   [cljsjs/react "18.3.1-1"]
+   [cljsjs/react-dom "18.3.1-1"]]
 
-  :plugins [[lein-cljsbuild "1.1.7"]
+  :plugins [[lein-cljsbuild "1.1.8"]
             [lein-cljfmt "0.6.7"]]
 
   :profiles {:dev {:source-paths ["examples"]
-                   :dependencies [[cljsjs/react-dom-server "16.8.6-0"]
+                   :dependencies [[cljsjs/react-dom-server "18.3.1-1"]
                                   [cljsjs/prop-types "15.7.2-0"]
                                   [clj-diffmatchpatch "0.0.9.3" :exclusions [org.clojure/clojure]]]}
              :perf {:source-paths ["perf"]
