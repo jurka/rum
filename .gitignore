@@ -10,3 +10,7 @@ pom.xml.asc
 /.nrepl-port
 .DS_Store
 .nrepl-history
+.idea
+rum.iml
+.cljs_node_repl/
+.cpcache/

@@ -1,29 +1,33 @@
 (ns rum.examples
   (:require
-    [clojure.string :as str]
-    [rum.core :as rum]
-    [rum.examples.core :as core]
-    
-    [rum.examples.timer-static :as timer-static]
-    [rum.examples.timer-reactive :as timer-reactive]
-    [rum.examples.controls :as controls]
-    [rum.examples.binary-clock :as binary-clock]
-    [rum.examples.board-reactive :as board-reactive]
-    [rum.examples.bmi-calculator :as bmi-calculator]
-    [rum.examples.form-validation :as form-validation]
-    [rum.examples.inputs :as inputs]
-    [rum.examples.refs :as refs]
-    [rum.examples.local-state :as local-state]
-    [rum.examples.keys :as keys]
-    [rum.examples.self-reference :as self-reference]
-    [rum.examples.context :as context]
-    [rum.examples.custom-props :as custom-props]))
+   [clojure.string :as str]
+   [rum.core :as rum]
+   [rum.examples.core :as core]
 
+   [rum.examples.timer-static :as timer-static]
+   [rum.examples.timer-reactive :as timer-reactive]
+   [rum.examples.controls :as controls]
+   [rum.examples.binary-clock :as binary-clock]
+   [rum.examples.board-reactive :as board-reactive]
+   [rum.examples.bmi-calculator :as bmi-calculator]
+   [rum.examples.form-validation :as form-validation]
+   [rum.examples.inputs :as inputs]
+   [rum.examples.refs :as refs]
+   [rum.examples.local-state :as local-state]
+   [rum.examples.keys :as keys]
+   [rum.examples.self-reference :as self-reference]
+   [rum.examples.context :as context]
+   [rum.examples.custom-props :as custom-props]
+   [rum.examples.multiple-return :as multiple-return]
+   [rum.examples.portals :as portals]
+   [rum.examples.errors :as errors]
+   [rum.examples.js-components :as js-components]))
 
 (enable-console-print!)
 
 
 ;; Mount everything
+
 
 (timer-static/mount!    (core/el "timer-static"))
 (timer-reactive/mount!  (core/el "timer-reactive"))
@@ -38,14 +42,18 @@
 (keys/mount!            (core/el "keys"))
 (self-reference/mount!  (core/el "self-reference"))
 (context/mount!         (core/el "context"))
-(custom-props/mount!    (core/el "custom-props")) 
+(custom-props/mount!    (core/el "custom-props"))
+(multiple-return/mount! (core/el "multiple-return"))
+(portals/mount!         (core/el "portal-root"))
+(errors/mount!          (core/el "client-errors"))
+(js-components/mount!   (core/el "js-components"))
 
 
 ;; Start clock ticking
 
+
 (defn tick []
   (reset! core/*clock (.getTime (js/Date.)))
   (js/setTimeout tick @core/*speed))
-
 
 (tick)
